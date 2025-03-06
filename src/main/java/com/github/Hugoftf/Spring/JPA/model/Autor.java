@@ -2,13 +2,18 @@ package com.github.Hugoftf.Spring.JPA.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "autor", schema = "public")
-@Data
+@EntityListeners(AuditingEntityListener.class)
 public class Autor {
 
     @Id
@@ -27,6 +32,18 @@ public class Autor {
 
     @OneToMany(mappedBy = "idAutor")
     private List<Livro> livros;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
+
+    @LastModifiedDate
+    @Column(name = "data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
+    @Column(name="id_usuario")
+    private UUID idUsuario;
+
 
     public UUID getId() {
         return id;
@@ -68,6 +85,30 @@ public class Autor {
         this.livros = livros;
     }
 
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public UUID getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(UUID idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     @Override
     public String toString() {
         return "Autor{" +
@@ -76,6 +117,9 @@ public class Autor {
                 ", dataNascimento=" + dataNascimento +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 ", livros=" + livros +
+                ", dataCadastro=" + dataCadastro +
+                ", dataAtualizacao=" + dataAtualizacao +
+                ", idUsuario=" + idUsuario +
                 '}';
     }
 }
