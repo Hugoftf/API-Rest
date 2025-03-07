@@ -3,6 +3,7 @@ package com.github.Hugoftf.Spring.JPA.controller;
 
 import com.github.Hugoftf.Spring.JPA.controller.dto.AutorDTO;
 import com.github.Hugoftf.Spring.JPA.controller.dto.ErroResposta;
+import com.github.Hugoftf.Spring.JPA.exceptions.OperacaoNaoPermitida;
 import com.github.Hugoftf.Spring.JPA.exceptions.RegistroDuplicadoException;
 import com.github.Hugoftf.Spring.JPA.model.Autor;
 import com.github.Hugoftf.Spring.JPA.service.AutorService;
@@ -70,16 +71,21 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarAutor(@PathVariable("id") String id){
-        var idColetado = UUID.fromString(id);
-        Optional<Autor> autorOptional = autorService.obterDetalhes(idColetado);
+    public ResponseEntity<Object> deletarAutor(@PathVariable("id") String id){
+       try {
+           var idColetado = UUID.fromString(id);
+           Optional<Autor> autorOptional = autorService.obterDetalhes(idColetado);
 
-        if (autorOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
+           if (autorOptional.isEmpty()) {
+               return ResponseEntity.notFound().build();
+           }
 
-        autorService.deletar(autorOptional.get());
-        return ResponseEntity.noContent().build();
+           autorService.deletar(autorOptional.get());
+           return ResponseEntity.noContent().build();
+       }catch (OperacaoNaoPermitida e){
+           var erroDTO = ErroResposta.conflito(e.getMessage());
+           return ResponseEntity.status(erroDTO.status()).body(erroDTO);
+       }
 
     }
 
@@ -103,22 +109,30 @@ public class AutorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizandoAutor(@PathVariable("id") String id, @RequestBody AutorDTO autorDTO){
-        var idColetado = UUID.fromString(id);
-        Optional<Autor> autorOptional = autorService.obterDetalhes(idColetado);
-        if (autorOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Object> atualizandoAutor(@PathVariable("id") String id,
+                                                   @RequestBody AutorDTO autorDTO){
+
+        try {
+            var idColetado = UUID.fromString(id);
+            Optional<Autor> autorOptional = autorService.obterDetalhes(idColetado);
+            if (autorOptional.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            var autor = autorOptional.get();
+
+            autor.setNome(autorDTO.nome());
+            autor.setNacionalidade(autorDTO.nacionalidade());
+            autor.setDataNascimento(autorDTO.dataNascimento());
+
+            autorService.atualizar(autor);
+
+            return ResponseEntity.noContent().build();
+
+        }catch (RegistroDuplicadoException e){
+            var erroDTO = ErroResposta.respostaPadrao(e.getMessage());
+            return ResponseEntity.status(erroDTO.status()).body(erroDTO);
         }
-
-        var autor = autorOptional.get();
-
-        autor.setNome(autorDTO.nome());
-        autor.setNacionalidade(autorDTO.nacionalidade());
-        autor.setDataNascimento(autorDTO.dataNascimento());
-
-        autorService.atualizar(autor);
-
-        return ResponseEntity.noContent().build();
 
     }
 

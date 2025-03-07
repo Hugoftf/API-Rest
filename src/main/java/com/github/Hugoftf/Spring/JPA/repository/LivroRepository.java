@@ -41,4 +41,6 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
     @Query("select l from Livro as l where l.genero = ?1 order by ?2")
     List<Livro> findByGeneroPositional(GeneroLivro generoLivro, String nomePropriedade);
 
+    boolean existsByIdAutor(Autor autor);
+
 }
