@@ -2,6 +2,8 @@ package com.github.Hugoftf.Spring.JPA.controller;
 
 
 import com.github.Hugoftf.Spring.JPA.controller.dto.AutorDTO;
+import com.github.Hugoftf.Spring.JPA.controller.dto.ErroResposta;
+import com.github.Hugoftf.Spring.JPA.exceptions.RegistroDuplicadoException;
 import com.github.Hugoftf.Spring.JPA.model.Autor;
 import com.github.Hugoftf.Spring.JPA.service.AutorService;
 import org.springframework.http.HttpStatus;
@@ -28,18 +30,24 @@ public class AutorController {
 
 
     @PostMapping
-    public ResponseEntity<Void> salvar(@RequestBody AutorDTO autorDTO){
+    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autorDTO){
 
-        Autor autorMapeado = autorDTO.mapeandoParaAutor();
-        autorService.salvar(autorMapeado);
+        try {
+            Autor autorMapeado = autorDTO.mapeandoParaAutor();
+            autorService.salvar(autorMapeado);
 
-        //http://localhost:8080/autores/(ID AQUI)
-       URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(autorMapeado.getId())
-                .toUri();
+            //http://localhost:8080/autores/(ID AQUI)
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(autorMapeado.getId())
+                    .toUri();
 
-        return  ResponseEntity.created(uri).build();
+            return ResponseEntity.created(uri).build();
+        }
+        catch (RegistroDuplicadoException e){
+            var erroDTO = ErroResposta.conflito(e.getMessage());
+            return ResponseEntity.status(erroDTO.status()).body(erroDTO);
+        }
     }
 
     @GetMapping("/{id}")
@@ -93,4 +101,25 @@ public class AutorController {
         return ResponseEntity.ok(autorDTOList);
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizandoAutor(@PathVariable("id") String id, @RequestBody AutorDTO autorDTO){
+        var idColetado = UUID.fromString(id);
+        Optional<Autor> autorOptional = autorService.obterDetalhes(idColetado);
+        if (autorOptional.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        var autor = autorOptional.get();
+
+        autor.setNome(autorDTO.nome());
+        autor.setNacionalidade(autorDTO.nacionalidade());
+        autor.setDataNascimento(autorDTO.dataNascimento());
+
+        autorService.atualizar(autor);
+
+        return ResponseEntity.noContent().build();
+
+    }
+
 }
