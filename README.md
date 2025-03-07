@@ -15,6 +15,6 @@
 
 ## Sobre 
 
-Programa para exemplificar a construção de uma API Resft full em um projeto já mapeado com JPA. Utilizando o Docker para rodar um banco de dados PostgreSQL em conjunto com console PgAdmin4, Aplicativo Postman foi utilizado para testar nossas requições HTTP da API.
+Programa para exemplificar a construção de uma API Rest full em um projeto já mapeado com JPA. Utilizando o Docker para rodar um banco de dados PostgreSQL em conjunto com console PgAdmin4, Aplicativo Postman foi utilizado para testar nossas requições HTTP da API.
 
 
