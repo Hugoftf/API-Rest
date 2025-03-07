@@ -8,6 +8,10 @@
   - [Inicio](#Inicio)
  
 
+## Sobre 
+
+Programa para exemplificar a construção de uma API Resft full em um projeto já mapeado com JPA.
+
 ## Tecnologias Usadas
 
 [Java](https://www.java.com/pt-BR/) / [Spring](https://spring.io/projects/spring-boot) / [Docker](https://www.docker.com/) / [PostgresSQL](https://www.postgresql.org/) / [Pgadmin4](https://www.pgadmin.org/download/pgadmin-4-windows/)
