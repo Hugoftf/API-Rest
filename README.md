@@ -38,3 +38,14 @@ Para começar a implementar a Api, primeiro criamos a classe AutorController no 
 Por sua vez a classe AutorService recebe a anotação @Service (A camada Service em uma aplicação, especialmente em uma API, é responsável pela lógica de negócios. Ela atua como uma camada intermediária entre a camada de Controller (responsável pelas requisições HTTP) e a camada de Repository/DAO (responsável pela persistência de dados, como bancos de dados)), ela é reponsavel pela lógica, e passa para o controller tudo mastigado. A classe tem uma injeção de dependencia do AutorRepository para realizar as ações nos métodos.
 
 ![imagem local](/imagem_readme/service/autor_service/classe_autorservice.png)
+
+
+## Mapeando a API
+
+
+#### DTO
+
+Para começar criaremos o record AutorDTO, ele vai servi para simular alguns campos da classe Autor.
+
+
+
