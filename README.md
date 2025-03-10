@@ -6,6 +6,8 @@
   - [Tecnologias Usadas](#Tecnologias-Usadas)
   - [Sobre](#Sobre)
   - [Inicio](#Inicio)
+  - [Desenvolvendo a API](#Mapeando-a-API)
+  - [Melhorias](#Melhoriais)
 
  
 ## Tecnologias Usadas
@@ -173,8 +175,7 @@ No Postman:
 
 
 
-
-### Melhoriais
+## Melhoriais
 
 
 #### Atualizando a classe Autor:
@@ -196,7 +197,10 @@ A anotação @CreatedDate vai servi para que quando um novo autor for criado a c
 A anotação @LastModifiedDate como o proprio nome já diz, quando o campo for atualizado ele indicará a ultima data de atualização.
 
 
+#### Recod Erros
 
+
+Vamos criar record para retornar como corpo de erros personalizados. 
 
 
 
