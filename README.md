@@ -40,21 +40,6 @@ Por sua vez a classe AutorService recebe a anotação @Service (A camada Service
 ![imagem local](/imagem_readme/service/autor_service/classe_autorservice.png)
 
 
-Na classe Autor, vamos adicionar algumas campos para ser coluna no banco de dados (Como no nosso arquivo applicaiton.yml tem a propriedade ddl auto para update, todo campo que eu mapeo com JPA irá atualizar no banco de dados).
-
-![imagem local](/imagem_readme/app_yamal_config.png)
-
-
-Atualizando a classe Autor:
-
-
-![imagem local](imagem_readme/Classe_Autor/novos_campos_classe_autor.png)
-
-
-A anotação @CreatedDate vai servi para que quando um novo autor for criado a coluna irá informar a data e hora que foi criado.
-
-A anotação @LastModifiedDate como o proprio nome já diz, quando o campo for atualizado ele indicará a ultima data de atualização.
-
 
 ## Mapeando a API
 
@@ -73,13 +58,24 @@ E criamos o método mapeandoParaAutor para transformar campos de AutorDTO em Aut
 ![imgagem local](imagem_readme/Controller/autorDTO/mapeando_para_autor.png)
 
 
+
+
 ### Criando CRUD e Testando Estrutura do Programa
 
+
+#### POST
 
 Criando um metodo post básico na classe Controller para testar requisições e a estrutura do projeto:
 
 
+
 ![imgagem local](imagem_readme/Controller/AutorController/metodo_salvar.png)
+
+
+
+Na camada Service:
+
+![imgagem local](imagem_readme/service/autor_service/metodo_salvar.png)
 
 
 O retorno no Postman:
@@ -88,10 +84,14 @@ O retorno no Postman:
 ![imgagem local](imagem_readme/Postman/resultado_autor/post_metodo_salvar1.png)
 
 
+
 No Banco de Dados:
 
 
 ![imgagem local](/imagem_readme/postgresSQL_resultado/resultado_do_post_1.png)
+
+
+Como funciona o Post, no nosso Postman utilizamos a URL juntamente com a requicição POST, No nosso metodo, ele está anotado com @PostMapping, para que quando A requisição for POST junto com a url definida no parametro do método(Que geralmente o padrão e o mesmo da classe), ele execute as ações do método. No caso do nosso método POST, ele transita entre service e repository para salvar no banco de dados, o metodo recebe como parametro um AutorDTO que e convertido em Autor, e como o corpo do método é ResponseEntity para ter um retorno mais personalizado no Postman, ele necessita da URI para retorna no Postman.
 
 
 #### GET
@@ -103,6 +103,14 @@ Agora com o método Get:
 ![imgagem local](/imagem_readme/Controller/AutorController/metodo_obter_detalhes.png)
 
 
+
+Na camada Service:
+
+
+![imgagem local](imagem_readme/service/autor_service/metodo_obter_detalhes.png)
+
+
+
 No Postman:
 
 
@@ -110,8 +118,82 @@ No Postman:
 
 
 
+No caso do Get, na anotação GetMapping, necessita do parametro /id, o UUID do autor no banco de dados. Depois de realiar a Requisição Get juntamente com o http e id, ele retorna os dados do autor(ou não) e o código do ResponseEntity.
 
 
+#### DELETE
+
+
+Metodo delete, com a anotação DeleteMapping com o parametro /id:
+
+
+![imgagem local](imagem_readme/Controller/AutorController/metodo_delete_autor.png)
+
+
+Na camada Service:
+
+
+![imgagem local](imagem_readme/service/autor_service/metodo_delete_autor.png)
+
+
+
+No Postman:
+
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/metodo_delete_autor.png)
+
+
+
+(Parecido com o metodo GET)
+
+
+#### PUT
+
+
+Metodo Put, recebe a anotação @PutMapping com parametro id da requisição:
+
+
+![imgagem local](imagem_readme/Controller/AutorController/metodo_put_atualizar_autor.png)
+
+
+Na camada Service:
+
+
+![imgagem local](imagem_readme/service/autor_service/metodo_put_atualizar_autor.png)
+
+
+
+Ele é uma mistura de Get com Post, com o id da requisição ele busca no banco se o autor existe ou não, o outro parametro tem a anotação @RequestBody para receber o o Autor do banco, em seguida da um set nas novas informações que é posta no Postman em formato JSON.
+
+No Postman:
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/put_atualizar_autor.png)
+
+
+
+
+### Melhoriais
+
+
+#### Atualizando a classe Autor:
+
+
+Na classe Autor, vamos adicionar algumas campos para ser coluna no banco de dados (Como no nosso arquivo applicaiton.yml tem a propriedade ddl auto para update, todo campo que eu mapeo com JPA irá atualizar no banco de dados).
+
+![imagem local](/imagem_readme/app_yamal_config.png)
+
+
+Campos:
+
+
+![imagem local](imagem_readme/Classe_Autor/novos_campos_classe_autor.png)
+
+
+A anotação @CreatedDate vai servi para que quando um novo autor for criado a coluna irá informar a data e hora que foi criado.
+
+A anotação @LastModifiedDate como o proprio nome já diz, quando o campo for atualizado ele indicará a ultima data de atualização.
 
 
 
