@@ -40,12 +40,81 @@ Por sua vez a classe AutorService recebe a anotação @Service (A camada Service
 ![imagem local](/imagem_readme/service/autor_service/classe_autorservice.png)
 
 
+Na classe Autor, vamos adicionar algumas campos para ser coluna no banco de dados (Como no nosso arquivo applicaiton.yml tem a propriedade ddl auto para update, todo campo que eu mapeo com JPA irá atualizar no banco de dados).
+
+![imagem local](/imagem_readme/app_yamal_config.png)
+
+
+Atualizando a classe Autor:
+
+
+![imagem local](imagem_readme/Classe_Autor/novos_campos_classe_autor.png)
+
+
+A anotação @CreatedDate vai servi para que quando um novo autor for criado a coluna irá informar a data e hora que foi criado.
+
+A anotação @LastModifiedDate como o proprio nome já diz, quando o campo for atualizado ele indicará a ultima data de atualização.
+
+
 ## Mapeando a API
 
 
-#### DTO
+### DTO
 
 Para começar criaremos o record AutorDTO, ele vai servi para simular alguns campos da classe Autor.
+
+
+![imgagem local](imagem_readme/Controller/autorDTO/record_autordto.png)
+
+
+E criamos o método mapeandoParaAutor para transformar campos de AutorDTO em Autor, setando os campos obrigatórios de autor:
+
+
+![imgagem local](imagem_readme/Controller/autorDTO/mapeando_para_autor.png)
+
+
+### Criando CRUD e Testando Estrutura do Programa
+
+
+Criando um metodo post básico na classe Controller para testar requisições e a estrutura do projeto:
+
+
+![imgagem local](imagem_readme/Controller/AutorController/metodo_salvar.png)
+
+
+O retorno no Postman:
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/post_metodo_salvar1.png)
+
+
+No Banco de Dados:
+
+
+![imgagem local](/imagem_readme/postgresSQL_resultado/resultado_do_post_1.png)
+
+
+#### GET
+
+
+Agora com o método Get:
+
+
+![imgagem local](/imagem_readme/Controller/AutorController/metodo_obter_detalhes.png)
+
+
+No Postman:
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/get_obter_informacao.png)
+
+
+
+
+
+
+
+
 
 
 
