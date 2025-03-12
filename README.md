@@ -197,6 +197,15 @@ O campo dataCadastro irá servi para que novos  Autores cadastrado no banco de d
 O campo DataAutalizacao irá servi para quando o campo for atualizado será modificado a data e hora para cada respectiva atualização;
 
 
+### AutorRepository
+
+Adicionando QueryMethods personalizados para ser utilizados para consulta personalizadas e possiveis erros:
+
+
+![imgagem local](imagem_readme/Autor_repository/query_metodo_findbByNomeAndDataNascimentoAndNacionalidade.png)
+
+
+
 ### Criação de Erros personalizados:
 
 
@@ -237,6 +246,20 @@ A classe OperacaoNaoPermitida, vai servi para tratar possuveis erros genéricos 
 
 ![imgagem local](imagem_readme/exception/classe_operacaonaopermitida.png)
 
+
+### Criação de Validator
+
+
+Criando uma classe chamada Validator para checar alguns condições antes de enviar as mdanças ao banco de dados, caso contrário irá lançar uma dos nossos erros ou exceções:
+
+
+![imgagem local](imagem_readme/service/validator/classe_AutorValidator.png)
+
+
+Metodos de validação com exceções personlizadas:
+
+
+![imgagem local](/imagem_readme/service/validator/metodo_para_validar.png)
 
 
 
