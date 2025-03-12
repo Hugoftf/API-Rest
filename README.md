@@ -177,6 +177,26 @@ No Postman:
 ## Melhorias
 
 
+### Melhorando a entidade Autor
+
+
+Antes de começar a adicionar melhores na classe autor, no arquivo aplication.yml(yamal) vamos adicionar uma mudança de jpa, para que não precise dropar a tabela no banco de dados e implementar mudanças no prório programa atraves de java e jpa:
+
+
+
+![imgagem local](/imagem_readme/app_yamal_config.png)
+
+
+Feito a mudança, na classe Autor foi implementado as colunas: dataCadastro, dataAtualizacao e idUsuario:
+
+
+![imgagem local](/imagem_readme/Classe_Autor/novos_campos_classe_autor.png)
+
+
+O campo dataCadastro irá servi para que novos  Autores cadastrado no banco de dados tenha sua data e hora registrada nessa coluna;
+O campo DataAutalizacao irá servi para quando o campo for atualizado será modificado a data e hora para cada respectiva atualização;
+
+
 ### Criação de Erros personalizados:
 
 
