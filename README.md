@@ -262,6 +262,21 @@ Metodos de validação com exceções personlizadas:
 ![imgagem local](/imagem_readme/service/validator/metodo_para_validar.png)
 
 
+### Mudanças na camada Service
+
+
+Implementando injeções de dependencias para a classe LivroRepository para possivel tratativa de erro:
+
+
+![imgagem local](/imagem_readme/service/autor_service/classe_service_atualizado.png)
+
+(Atualização de metodos na camada serice)
+
+### Mudança em métodos na camada controller
+
+(atalização dos cruds)
+
+
 
 
 
