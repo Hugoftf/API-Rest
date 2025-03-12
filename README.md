@@ -175,32 +175,4 @@ No Postman:
 
 
 
-## Melhoriais
-
-
-#### Atualizando a classe Autor:
-
-
-Na classe Autor, vamos adicionar algumas campos para ser coluna no banco de dados (Como no nosso arquivo applicaiton.yml tem a propriedade ddl auto para update, todo campo que eu mapeo com JPA irá atualizar no banco de dados).
-
-![imagem local](/imagem_readme/app_yamal_config.png)
-
-
-Campos:
-
-
-![imagem local](imagem_readme/Classe_Autor/novos_campos_classe_autor.png)
-
-
-A anotação @CreatedDate vai servi para que quando um novo autor for criado a coluna irá informar a data e hora que foi criado.
-
-A anotação @LastModifiedDate como o proprio nome já diz, quando o campo for atualizado ele indicará a ultima data de atualização.
-
-
-#### Recod Erros
-
-
-Vamos criar record para retornar como corpo de erros personalizados. 
-
-
 
