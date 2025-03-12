@@ -7,7 +7,7 @@
   - [Sobre](#Sobre)
   - [Inicio](#Inicio)
   - [Desenvolvendo a API](#Mapeando-a-API)
-  - [Melhorias](#Melhoriais)
+  - [Melhorias](#Melhorias)
 
  
 ## Tecnologias Usadas
@@ -172,6 +172,52 @@ No Postman:
 
 
 ![imgagem local](imagem_readme/Postman/resultado_autor/put_atualizar_autor.png)
+
+
+## Melhorias
+
+
+### Criação de Erros personalizados:
+
+
+Para que o codigo fique mais limpos, iremos implementar soluções personalizadas para pósiveis erros;
+
+
+
+![imgagem local](imagem_readme/Controller/DtosErros/ErroCampo/record_erro_campo.png)
+
+
+
+O record ErroCampo vai servi para identificar em qual campo o erro aconteceu e com sua descriação
+
+
+
+![imgagem local](imagem_readme/Controller/DtosErros/ErroResposta/record_erro_resposta_and_metodos.png)
+
+
+
+O record ErroResposta será a representação do corpo do erro, que não necessariamente possam ser com o campo, possui um campo com atributo int para representar o código de status,
+a uma string para retornar que tipo de erro aconteceu e uma lista de ErroCampo para no caso de erro em campos da entidade. Ele possui 2 metodos statics para situações com que não sejam erros com campos então por isso qe retornar uma lista vazia
+
+
+### Exceptions
+
+
+Criando também exceptions personalizadas que herdam de Runtime, para deixar o código mais limpo.
+
+A classe RegistroDuplicado vai servi para uma tratar um erro expecífico de duplicação de registro no banco de dados.
+
+
+![imgagem local](imagem_readme/exception/classe_registroDuplicadoException.png)
+
+
+
+A classe OperacaoNaoPermitida, vai servi para tratar possuveis erros genéricos que possam acontecer:
+
+
+![imgagem local](imagem_readme/exception/classe_operacaonaopermitida.png)
+
+
 
 
 
