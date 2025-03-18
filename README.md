@@ -270,7 +270,26 @@ Implementando injeções de dependencias para a classe LivroRepository para poss
 
 ![imgagem local](/imagem_readme/service/autor_service/classe_service_atualizado.png)
 
-(Atualização de metodos na camada serice)
+
+Agora precisamos atualizar os metodos, colocar validações para deixar o código mais seguro.
+
+#### Delete no Service
+
+
+Primeiro vamos criar um metodo boolean para identificar se o autor possui livro. Por regra de negocios, você não pode excluir um autor se ele tiver um livro associado a ele:
+
+
+![imgagem local](/imagem_readme/service/autor_service/metodo_possui_livro.png)
+
+
+Depois atualizamos o metodo com essa validação para então excluir o autor:
+
+
+![imgagem local](/imagem_readme/service/autor_service/metodo_deletar_atualizado.png)
+
+
+#### 
+
 
 ### Mudança em métodos na camada controller
 
