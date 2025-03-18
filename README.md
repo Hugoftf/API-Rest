@@ -341,6 +341,18 @@ o retorno no postman:
 #### DELETE
 
 
+No metodo delete, utilizamos o metodo static conflito do record ErroStatus para dizer que não podemos deletar um autor que tenha livros associado:
+
+
+![imgagem local](/imagem_readme/Controller/AutorController/delete_metodo_atualizado.png)
+
+
+
+O retorno no Postman:
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/delete_resultado_atualizado.png)
+
 
 
 
