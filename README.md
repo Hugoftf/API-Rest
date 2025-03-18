@@ -288,12 +288,60 @@ Depois atualizamos o metodo com essa validação para então excluir o autor:
 ![imgagem local](/imagem_readme/service/autor_service/metodo_deletar_atualizado.png)
 
 
-#### 
+#### Salvar e Atualizar
+
+
+Vamos atualizar também os metodos salvar e atualizar, onde precisamos validar antes de salvar se o existe o autor da mesma forma que precisamos validar se existe o autor antes de tentar atualizar, caso exista retornar a nossa exceção personalizada:
+
+
+![imgagem local](/imagem_readme/service/autor_service/metodo_salvar_e_atualizar_atualizados.png)
+
 
 
 ### Mudança em métodos na camada controller
 
-(atalização dos cruds)
+
+Agora na camada controller vamos também atualizar nossos cruds.
+
+
+#### POST
+
+
+Como na camada service os nossos validador lança exceções personalizadas, os nossos metodos da camada controller serão tratados com o try-catch.
+
+
+
+![imgagem local](imagem_readme/Controller/AutorController/post_metodo_atualizado.png)
+
+
+
+Repare que se o metodo lança exceção o retorno deverá ser um ResponseEntity, que tem a representação no record ErroResposta com o codigo de status http, a mensagem da exceção e talves os campos que possam ter causados erros. No postman para testar o metodo, erramos de proposito e o resultado é:
+
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/post_resultado_errostatus.png)
+
+
+
+#### PUT
+
+Da mesma forma, o put tem o mesmo tratamento que o post:
+
+
+![imgagem local](imagem_readme/Controller/AutorController/put_metodo_atualizado.png)
+
+
+o retorno no postman:
+
+
+![imgagem local](imagem_readme/Postman/resultado_autor/put_resultado_errostatus.png)
+
+
+
+#### DELETE
+
+
+
 
 
 
