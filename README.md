@@ -8,6 +8,7 @@
   - [Inicio](#Inicio)
   - [Desenvolvendo a API](#Mapeando-a-API)
   - [Melhorias](#Melhorias)
+  - [API Livros](#API-Livros)
 
  
 ## Tecnologias Usadas
@@ -354,8 +355,11 @@ O retorno no Postman:
 ![imgagem local](imagem_readme/Postman/resultado_autor/delete_resultado_atualizado.png)
 
 
+### Validação no Projeto
 
 
 
+
+# API-Livros
 
 
