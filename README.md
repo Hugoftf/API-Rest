@@ -357,9 +357,37 @@ O retorno no Postman:
 
 ### Validação no Projeto
 
+O validation serve para facilitar a implementação de validações em aplicações Spring, especialmente em DTOs (Data Transfer Objects) usados em requisições HTTP. Como se fosse constraints, e ao você violar alguma ele retornar um error e não deixa a requisição ir adiante
+
+Para começar a implemetanção de validações precisamos implementar no nosso arquivo xml um novo starter:
+
+
+![imgagem local](imagem_readme/starter_validation.png)
 
 
 
-# API-Livros
+Ele vai servi para habilitar nossas anotações de validações. 
+
+
+Agora começamos a personalizar nosso Record DTO:
+
+
+![imgagem local](/imagem_readme/Controller/autorDTO/autorDTO_validation.png)
+
+
+
+Adicionando básicamente as constrants que inicializamos ao criar as tabelas no banco de dados. No nosso Controller precisamos utilizar a anotação @Valid para ativar a validação automática de objetos com base nas regras definidas no nosso validation, no caso no Record DTO.
+
+Agora criamos a classe GlobalExceptionHandle em conjunto com a anotação @RestControllerAdvice para capturar qualquer classe de exceção, e retornar um Body para nossa requisão em formato de erro:
+
+
+![imgagem local](/imagem_readme/Controller/common/classe_globalExceptionHandler.png)
+
+
+
+Utilizamos um metodo para retornar o record ErrosResposta já que ele e utilizado como retorno no catch dos nosso métodos como body de um response entity.
+
+
+## API-Livros
 
 
