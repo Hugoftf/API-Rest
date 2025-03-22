@@ -387,6 +387,34 @@ Agora criamos a classe GlobalExceptionHandle em conjunto com a anotação @RestC
 
 Utilizamos um metodo para retornar o record ErrosResposta já que ele e utilizado como retorno no catch dos nosso métodos como body de um response entity.
 
+Os retornos ao forçar alguns erros, a começar por erro de data de nascimento ser futura:
+
+
+![imgagem local](/imagem_readme/Controller/common/retornos/somentedatapassada.png)
+
+
+Agora campos nullos:
+
+
+![imgagem local](API-Rest/imagem_readme/Controller/common/retornos/campoforadopadrao_e_campoobrigatorio.png)
+
+
+
+#### Melhoria no pesquisar com query by example 
+
+Query by Example (QBE) é um recurso do Spring Data que permite realizar consultas dinâmicas a partir de um objeto de exemplo. Com QBE, você cria uma instância de uma entidade com os valores desejados e o Spring automaticamente gera uma consulta baseada nesses valores. O QBE é útil para consultas flexíveis sem precisar escrever SQL ou JPQL manualmente.
+
+
+![imgagem local](/imagem_readme/service/autor_service/pesquisarByExample.png)
+
+
+Depois de implementar esse metodo na camada service na classe AutorService, fazemos a alteração do metodo na camada constroller para utilizar esse metodo. Na prática os retornos ficariam assim:
+
+
+![imgagem local](/imagem_readme/Postman/resultado_autor/get_parametro/pesquisando_brasileiro.png)
+
+
+![imgagem local](/imagem_readme/Postman/resultado_autor/get_parametro/pesquisando_com_nome_e_nacionalidade.png)
 
 ## API-Livros
 
