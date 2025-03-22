@@ -396,7 +396,7 @@ Os retornos ao forçar alguns erros, a começar por erro de data de nascimento s
 Agora campos nullos:
 
 
-![imgagem local](API-Rest/imagem_readme/Controller/common/retornos/campoforadopadrao_e_campoobrigatorio.png)
+![imgagem local](imagem_readme/Controller/common/retornos/campoforadopadrao_e_campoobrigatorio.png)
 
 
 
