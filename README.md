@@ -416,6 +416,12 @@ Depois de implementar esse metodo na camada service na classe AutorService, faze
 
 ![imgagem local](/imagem_readme/Postman/resultado_autor/get_parametro/pesquisando_com_nome_e_nacionalidade.png)
 
+
+
+A primeira parte da nossa API foi desenvolvida focada na entidade Autor do nosso projeto, agora começamos a desenvolver a API focado na entidade Livro.
+
+
 ## API-Livros
+
 
 
