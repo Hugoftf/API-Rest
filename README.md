@@ -439,6 +439,20 @@ Depois como regra de negocio, vamos atualizar o campo isbn, adicionando uma cons
 ![imgagem local](/imagem_readme/API_Livro/Entidade_Livro/atualizacao_do_campo_isbn.png)
 
 
+Proximo passo, criação da camada service e controller da nossa API livro. A começar pela Service:
+
+
+![imgagem local](/imagem_readme/API_Livro/Livro_service/classe_LivroService.png)
+
+
+E agora o controller:
+
+
+![imgagem local](/imagem_readme/API_Livro/LivroController/classe_LivroController.png)
+
+
+
+
 
 
 
