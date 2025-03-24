@@ -424,4 +424,25 @@ A primeira parte da nossa API foi desenvolvida focada na entidade Autor do nosso
 ## API-Livros
 
 
+Antes de começar a desenvolver a API de livros, precisamos atualizar alguns a entidade Livro.
+
+
+A começar por adicionar os mesmo campos que foi adicionado na estidade Autor. Vai servi para deixar mais lógico nosso sistema:
+
+
+![imgagem local](imagem_readme/API_Livro/Entidade_Livro/novos_campos_dataCadastro_dataAtualizacao_idUsuario.png)
+
+
+Depois como regra de negocio, vamos atualizar o campo isbn, adicionando uma constrants para que ele não tenha dois livros com o mesmo isbn:
+
+
+![imgagem local](/imagem_readme/API_Livro/Entidade_Livro/atualizacao_do_campo_isbn.png)
+
+
+
+
+
+
+
+
 
