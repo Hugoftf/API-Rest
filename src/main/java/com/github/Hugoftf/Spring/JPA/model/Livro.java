@@ -2,14 +2,19 @@ package com.github.Hugoftf.Spring.JPA.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "livro", schema = "public")
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class Livro {
 
     @Id
@@ -17,7 +22,7 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "isbn", length = 20, nullable = false)
+    @Column(name = "isbn", length = 20, nullable = false, unique = true)
     private String isbn;
 
     @Column(name = "titulo", length = 50, nullable = false)
@@ -36,6 +41,42 @@ public class Livro {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_autor", nullable = false)
     private Autor idAutor;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
+
+    @LastModifiedDate
+    @Column(name = "data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
+    @Column(name="id_usuario")
+    private UUID idUsuario;
+
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public UUID getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(UUID idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public UUID getId() {
         return id;

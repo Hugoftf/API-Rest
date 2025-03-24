@@ -7,6 +7,7 @@ import com.github.Hugoftf.Spring.JPA.exceptions.OperacaoNaoPermitida;
 import com.github.Hugoftf.Spring.JPA.exceptions.RegistroDuplicadoException;
 import com.github.Hugoftf.Spring.JPA.model.Autor;
 import com.github.Hugoftf.Spring.JPA.service.AutorService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class AutorController {
 
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autorDTO){
+    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO autorDTO){
 
         try {
             Autor autorMapeado = autorDTO.mapeandoParaAutor();
@@ -94,7 +95,7 @@ public class AutorController {
             @RequestParam(value = "nome", required = false) String nome,
             @RequestParam(value = "nacionalidade", required = false) String nacionalidade
     ){
-        List<Autor> resultadoPesquisa = autorService.encontrarPorNomeOuNacionalidade(nome,
+        List<Autor> resultadoPesquisa = autorService.pesquisaByExample(nome,
                 nacionalidade);
 
         List<AutorDTO> autorDTOList = resultadoPesquisa
@@ -110,7 +111,7 @@ public class AutorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> atualizandoAutor(@PathVariable("id") String id,
-                                                   @RequestBody AutorDTO autorDTO){
+                                                   @RequestBody @Valid AutorDTO autorDTO){
 
         try {
             var idColetado = UUID.fromString(id);
