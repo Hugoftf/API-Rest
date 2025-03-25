@@ -472,6 +472,7 @@ DTO de pesquisa:
 ## Desenvolvendo a API
 
 
+Antes de começar a desenvolver as comadas service e controller, vamos adicionar o [MapStruct](https://mapstruct.org/documentation/stable/reference/html/), ele vai servi como facilitador para mapear DTO em entidades e entidades em DTO. Você precisará configurar no xml o maven, todas as informações podem ser encontradas no site.
 
 
 
