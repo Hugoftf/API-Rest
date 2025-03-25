@@ -474,6 +474,25 @@ DTO de pesquisa:
 
 Antes de começar a desenvolver as comadas service e controller, vamos adicionar o [MapStruct](https://mapstruct.org/documentation/stable/reference/html/), ele vai servi como facilitador para mapear DTO em entidades e entidades em DTO. Você precisará configurar no xml o maven, todas as informações podem ser encontradas no site.
 
+Agora podemos criar uma interface para representar nossos mappears para mapear nossos DTOs para entidades. A começar pela API de autor:
+
+
+![imgagem local](/imagem_readme/API_Livro/Mappers/interface_autorMapper.png)
+
+
+A interface é anotada com o @Mapper que tem como parametro o "componentmodel, que serve para dizer que é essa interface é uma estrutura mapper, e o parametro vai servi para dizer que essa estrutura é gerenciada pelo spring, logo possa ser usada como container de injeção de dependencia.
+
+Refatorando o metodo na camada controller da API de autor, ficaria assim:
+
+
+![imgagem local](imagem_readme/Controller/AutorController/classe_autorcontroller_com_mapper.png)
+
+
+Metodo POST:
+
+
+![imgagem local](/imagem_readme/Controller/AutorController/Post_com_mapper.png)
+
 
 
 
