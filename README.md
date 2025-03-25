@@ -451,9 +451,25 @@ E agora o controller:
 ![imgagem local](/imagem_readme/API_Livro/LivroController/classe_LivroController.png)
 
 
+### Camamda DTO
+
+
+Agora vamos utilizar também na API livros o [padrão DTO](https://devnit.medium.com/a-m%C3%A1gica-por-tr%C3%A1s-da-convers%C3%A3o-de-dados-o-padr%C3%A3o-dto-explicado-25f68a718b5a#:~:text=O%20padr%C3%A3o%20DTO%20%C3%A9%20mais,a%20efici%C3%AAncia%20do%20seu%20software.) para representar livros em dois aspectos, cadastro e resultado.
+
+DTO cadastro:
+
+
+![imgagem local](/imagem_readme/API_Livro/DTO/record_CadastroLivroDTO.png)
+
+
+DTO de pesquisa:
+
+
+![imgagem local](/imagem_readme/API_Livro/DTO/record_ResultadoPesquisaLivroDTO.png)
 
 
 
+## Desenvolvendo a API
 
 
 
