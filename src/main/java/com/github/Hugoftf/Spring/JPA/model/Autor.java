@@ -2,6 +2,8 @@ package com.github.Hugoftf.Spring.JPA.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -41,9 +43,8 @@ public class Autor {
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
-    @Column(name="id_usuario")
+    @Column(name = "id_usuario")
     private UUID idUsuario;
-
 
     public UUID getId() {
         return id;

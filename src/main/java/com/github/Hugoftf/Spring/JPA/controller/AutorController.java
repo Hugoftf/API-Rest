@@ -3,6 +3,7 @@ package com.github.Hugoftf.Spring.JPA.controller;
 
 import com.github.Hugoftf.Spring.JPA.controller.dto.AutorDTO;
 import com.github.Hugoftf.Spring.JPA.controller.dto.ErroResposta;
+import com.github.Hugoftf.Spring.JPA.controller.mappers.AutorMapper;
 import com.github.Hugoftf.Spring.JPA.exceptions.OperacaoNaoPermitida;
 import com.github.Hugoftf.Spring.JPA.exceptions.RegistroDuplicadoException;
 import com.github.Hugoftf.Spring.JPA.model.Autor;
@@ -25,9 +26,11 @@ import java.util.stream.Stream;
 public class AutorController {
 
     public AutorService autorService;
+    private AutorMapper autorMapper;
 
-    public AutorController(AutorService autorService){
+    public AutorController(AutorService autorService, AutorMapper autorMapper){
         this.autorService = autorService;
+        this.autorMapper = autorMapper;
     }
 
 
@@ -35,7 +38,7 @@ public class AutorController {
     public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO autorDTO){
 
         try {
-            Autor autorMapeado = autorDTO.mapeandoParaAutor();
+            Autor autorMapeado = autorMapper.toEntity(autorDTO);
             autorService.salvar(autorMapeado);
 
             //http://localhost:8080/autores/(ID AQUI)
@@ -56,18 +59,10 @@ public class AutorController {
     public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id){
         UUID idAutor = UUID.fromString(id);
 
-        Optional<Autor> autorOptional = autorService.obterDetalhes(idAutor);
-        if (autorOptional.isPresent()){
-            Autor autor = autorOptional.get();
-
-            AutorDTO autorDTO = new AutorDTO(autor.getId(),
-                    autor.getNome(),
-                    autor.getDataNascimento(),
-                    autor.getNacionalidade());
-            return ResponseEntity.ok(autorDTO);
-        }
-
-        return ResponseEntity.notFound().build();
+        return autorService.obterDetalhes(idAutor)
+                .map(autor -> {AutorDTO autorDTO = autorMapper.toDTO(autor);
+                return ResponseEntity.ok(autorDTO);
+                }).orElseGet(()-> ResponseEntity.notFound().build());
 
     }
 
