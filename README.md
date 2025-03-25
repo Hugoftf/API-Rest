@@ -482,7 +482,7 @@ Agora podemos criar uma interface para representar nossos mappears para mapear n
 
 A interface é anotada com o @Mapper que tem como parametro o "componentmodel, que serve para dizer que é essa interface é uma estrutura mapper, e o parametro vai servi para dizer que essa estrutura é gerenciada pelo spring, logo possa ser usada como container de injeção de dependencia.
 
-Refatorando o metodo na camada controller da API de autor, ficaria assim:
+Refatorando a camada controller da API de autor, ficaria assim:
 
 
 ![imgagem local](imagem_readme/Controller/AutorController/classe_autorcontroller_com_mapper.png)
