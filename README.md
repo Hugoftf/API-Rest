@@ -474,7 +474,7 @@ DTO de pesquisa:
 
 Antes de começar a desenvolver as comadas service e controller, vamos adicionar o [MapStruct](https://mapstruct.org/documentation/stable/reference/html/), ele vai servi como facilitador para mapear DTO em entidades e entidades em DTO. Você precisará configurar no xml o maven, todas as informações podem ser encontradas no site.
 
-Agora podemos criar uma interface para representar nossos mappears para mapear nossos DTOs para entidades. A começar pela API de autor:
+Agora podemos criar uma interface para representar nossos mappears para mapear nossos DTOs para entidades. A começar pela API de autor como exemplo:
 
 
 ![imgagem local](/imagem_readme/API_Livro/Mappers/interface_autorMapper.png)
@@ -492,6 +492,9 @@ Metodo POST:
 
 
 ![imgagem local](/imagem_readme/Controller/AutorController/Post_com_mapper.png)
+
+
+Agora a criação da interface de LivroMapper:
 
 
 
