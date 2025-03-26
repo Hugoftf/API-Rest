@@ -2,7 +2,9 @@ package com.github.Hugoftf.Spring.JPA.controller;
 
 import com.github.Hugoftf.Spring.JPA.controller.dto.CadastroLivroDTO;
 import com.github.Hugoftf.Spring.JPA.controller.dto.ErroResposta;
+import com.github.Hugoftf.Spring.JPA.controller.mappers.LivroMapper;
 import com.github.Hugoftf.Spring.JPA.exceptions.OperacaoNaoPermitida;
+import com.github.Hugoftf.Spring.JPA.model.Livro;
 import com.github.Hugoftf.Spring.JPA.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -13,25 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/livros")
-public class LivroController {
+public class LivroController implements GenericController {
 
     private final LivroService livroService;
+    private final LivroMapper livroMapper;
 
-    public LivroController(LivroService livroService){
+    public LivroController(LivroService livroService, LivroMapper livroMapper){
         this.livroService = livroService;
+        this.livroMapper = livroMapper;
     }
 
     @PostMapping
-    public ResponseEntity<Object> salvarLivro(@RequestBody @Valid CadastroLivroDTO livroDTO){
+    public ResponseEntity<Void> salvarLivro(@RequestBody @Valid CadastroLivroDTO livroDTO){
 
-        try{
-
-            return ResponseEntity.ok(livroDTO);
-
-        } catch (OperacaoNaoPermitida e) {
-            ErroResposta erroResposta = ErroResposta.respostaPadrao(e.getMessage());
-            return ResponseEntity.status(erroResposta.status()).body(erroResposta);
-        }
+        Livro livro = livroMapper.toEntity(livroDTO);
+        livroService.salvarLivro(livro);
+        var url = gerarHearderLocation(livro.getId());
+        return ResponseEntity.created(url).build();
     }
 
 }

@@ -20,8 +20,12 @@ public record CadastroLivroDTO(
         @Past
         @NotNull(message = "Campo obrigatorio")
         LocalDate dataPublicacao,
-        GeneroLivro generoLivro,
+
+
+        GeneroLivro genero,
+
         BigDecimal preco,
+
         @NotNull(message = "Campo obrigatorio")
         UUID idAutor
         ) {

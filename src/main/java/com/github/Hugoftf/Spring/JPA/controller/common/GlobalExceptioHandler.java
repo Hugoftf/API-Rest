@@ -2,6 +2,8 @@ package com.github.Hugoftf.Spring.JPA.controller.common;
 
 import com.github.Hugoftf.Spring.JPA.controller.dto.ErroCampo;
 import com.github.Hugoftf.Spring.JPA.controller.dto.ErroResposta;
+import com.github.Hugoftf.Spring.JPA.exceptions.OperacaoNaoPermitida;
+import com.github.Hugoftf.Spring.JPA.exceptions.RegistroDuplicadoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -24,6 +26,25 @@ public class GlobalExceptioHandler {
                 .collect(Collectors.toList());
 
         return new ErroResposta(HttpStatus.UNPROCESSABLE_ENTITY.value(), "Erro validação", listaErros);
+    }
+
+    @ExceptionHandler(OperacaoNaoPermitida.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErroResposta handleOperacaoNaoPermitidaException(OperacaoNaoPermitida e){
+        return ErroResposta.conflito(e.getMessage());
+    }
+
+    @ExceptionHandler(RegistroDuplicadoException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroResposta handleRegistroDuplicadoException(RegistroDuplicadoException e){
+        return ErroResposta.respostaPadrao(e.getMessage());
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErroResposta handleErrosNaoTradados(RuntimeException e){
+        return new ErroResposta(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "Ocorreu um erro não tratado", List.of());
     }
 
 }

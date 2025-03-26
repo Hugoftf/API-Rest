@@ -39,7 +39,7 @@ public class Livro {
     private BigDecimal preco;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_autor", nullable = false)
+    @JoinColumn(name = "idAutor", nullable = false)
     private Autor idAutor;
 
     @CreatedDate

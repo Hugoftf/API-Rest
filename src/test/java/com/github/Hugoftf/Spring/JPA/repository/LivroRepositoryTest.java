@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class LivroRepositoryTest {
 
