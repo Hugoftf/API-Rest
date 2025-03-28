@@ -520,7 +520,7 @@ Por fim o resultado no Postman:
 
 
 
-![imgagem local](API-Rest/imagem_readme/API_Livro/Postman/teste_LivroMapper.png)
+![imgagem local](/imagem_readme/API_Livro/Postman/teste_LivroMapper.png)
 
 
 
