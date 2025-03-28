@@ -513,6 +513,11 @@ E também a implementação de uma interface com um metodo default para gerar o 
 
 ![imgagem local](/imagem_readme/API_Livro/interface_GenericController.png)
 
+Na camada service a implementação do metodo salvar livro para ser usada na camada controller:
+
+
+[metodo salvar livro]
+
 
 Agora na implementação do nosso metodo POST na camada controller fica mais limpo e elegante:
 
@@ -526,6 +531,62 @@ Por fim o resultado no Postman:
 
 
 ![imgagem local](/imagem_readme/API_Livro/Postman/teste_LivroMapper.png)
+
+
+Agora com o metodo Get, primeiro na camada service a implementação do metodo obterPorId:
+
+
+![imgagem local](/imagem_readme/API_Livro/Livro_service/metodo_obterPorId.png)
+
+
+Na camada Controller:
+
+
+![imgagem local](imagem_readme/API_Livro/LivroController/GET_obterPorID.png)
+
+
+
+Resultado no Postman:
+
+
+![imgagem local](/imagem_readme/API_Livro/Postman/GET_obterPorID_resultado.png)
+
+
+
+Agora com o metodo Delete, na camada Service primeiro:
+
+
+
+![imgagem local](/imagem_readme/API_Livro/Livro_service/metodo_deletarLivro.png)
+
+
+
+Na camada controller:
+
+
+![imgagem local](imagem_readme/API_Livro/LivroController/delete_deletarLivro.png)
+
+
+
+Antes de deletar, eu vou criar um livro primeiro para ser deletado:
+
+
+
+![imgagem local](imagem_readme/API_Livro/Postman/novo_livro_criado_para_delete.png)
+
+
+
+Agora com heardle do livro é só copiar e colar a url e deletar:
+
+
+![imgagem local](/imagem_readme/API_Livro/Postman/delete_deletarLivro_resultado.png)
+
+
+
+
+
+
+
 
 
 
