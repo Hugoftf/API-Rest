@@ -508,6 +508,11 @@ Antes de desenvolvermos a camada controller e service, iremos adicionar metodos 
 
 ![imgagem local](/imagem_readme/API_Livro/GlobalHandleException/metodos_para_tratar_exceptions.png)
 
+E também a implementação de uma interface com um metodo default para gerar o hearder de URI e retonar nos metodos que necessitam de URI:
+
+
+![imgagem local](/imagem_readme/API_Livro/interface_GenericController.png)
+
 
 Agora na implementação do nosso metodo POST na camada controller fica mais limpo e elegante:
 
@@ -524,6 +529,5 @@ Por fim o resultado no Postman:
 
 
 
-Note que eu fiz uma pequena mudança para realizar um teste e retornar o body do POST no proprio postman.
 
 
