@@ -14,13 +14,9 @@ import java.lang.annotation.Target;
 @Mapper(componentModel = "spring", uses = AutorMapper.class)
 public abstract class LivroMapper {
 
-
+    @Autowired
     AutorRepository autorRepository;
 
-    @Autowired
-    public void setAutorRepository(AutorRepository autorRepository) {
-        this.autorRepository = autorRepository;
-    }
 
     @Mapping(target = "idAutor",
             expression = "java( autorRepository.findById(dto.idAutor()).orElse(null) )")

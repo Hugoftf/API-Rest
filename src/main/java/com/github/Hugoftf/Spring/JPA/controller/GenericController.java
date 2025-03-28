@@ -8,7 +8,8 @@ import java.util.UUID;
 public interface GenericController {
 
     default URI gerarHearderLocation(UUID id){
-        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
+        return ServletUriComponentsBuilder.
+                fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
     }
 
 }
