@@ -497,5 +497,33 @@ Metodo POST:
 Agora a criação da interface de LivroMapper:
 
 
+![imgagem local](imagem_readme/API_Livro/Mappers/abstractClass_LivroMapper.png)
+
+
+
+Como a entidade livro tem um autor, precisamos usar também o AutorRepository para agregar em nossas metodos, e como interfaces variaveis viram constantes, nesse caso, o melhor é a criação de uma abstract class, dessa forma posso injetar uma dependencia.
+
+Antes de desenvolvermos a camada controller e service, iremos adicionar metodos para tratar algumas exceções na nossa classe GlobalExceptionHandle, dessa forma não precisaremos implementar um try catch para retornar nossos erros:
+
+
+![imgagem local](/imagem_readme/API_Livro/GlobalHandleException/metodos_para_tratar_exceptions.png)
+
+
+Agora na implementação do nosso metodo POST na camada controller fica mais limpo e elegante:
+
+
+![imgagem local](/imagem_readme/API_Livro/LivroController/Post_metodo.png)
+
+
+
+Por fim o resultado no Postman:
+
+
+
+![imgagem local](API-Rest/imagem_readme/API_Livro/Postman/teste_LivroMapper.png)
+
+
+
+Note que eu fiz uma pequena mudança para realizar um teste e retornar o body do POST no proprio postman.
 
 
