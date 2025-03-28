@@ -516,7 +516,7 @@ E também a implementação de uma interface com um metodo default para gerar o 
 Na camada service a implementação do metodo salvar livro para ser usada na camada controller:
 
 
-[metodo salvar livro]
+![imgagem local](/imagem_readme/API_Livro/Livro_service/Post_metodo_salvarLivro.png)
 
 
 Agora na implementação do nosso metodo POST na camada controller fica mais limpo e elegante:
