@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecificationExecutor<Livro> {
@@ -22,6 +23,9 @@ public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecific
 
     // Encontrar livros por titulo
     List<Livro> findByTitulo(String titulo);
+
+    // Encontrar livros por titulo
+    Optional<Livro> findByIsbn(String isbn);
 
     // Encontrar livros por titulo ou ISBN
     List<Livro> findByTituloOrIsbn(String titulo, String isbn);
