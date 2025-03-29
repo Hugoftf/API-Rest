@@ -4,7 +4,11 @@ import com.github.Hugoftf.Spring.JPA.model.Autor;
 import com.github.Hugoftf.Spring.JPA.model.GeneroLivro;
 import com.github.Hugoftf.Spring.JPA.model.Livro;
 import com.github.Hugoftf.Spring.JPA.repository.LivroRepository;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.support.ExampleMatcherAccessor;
 import org.springframework.stereotype.Service;
@@ -37,7 +41,8 @@ public class LivroService {
         livroRepository.delete(livro);
     }
 
-    public List<Livro> pesquisa(String isbn, String titulo, GeneroLivro genero ) {
+    public Page<Livro> pesquisa(String isbn, String titulo, GeneroLivro genero,
+                                Integer tamanho, Integer tamanhoPagina ) {
 
         Specification<Livro> specs = (root, query, cb) -> cb.conjunction();
 
@@ -53,7 +58,9 @@ public class LivroService {
             specs = specs.and(generoEqual(genero));
         }
 
-        return livroRepository.findAll(specs);
+        Pageable pagina = PageRequest.of(tamanho, tamanhoPagina);
+
+        return livroRepository.findAll(specs, pagina);
     }
 
     public void atualizar(Livro livro){

@@ -9,6 +9,7 @@ import com.github.Hugoftf.Spring.JPA.model.GeneroLivro;
 import com.github.Hugoftf.Spring.JPA.model.Livro;
 import com.github.Hugoftf.Spring.JPA.service.LivroService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,16 +58,19 @@ public class LivroController implements GenericController {
 
 
     @GetMapping
-    public ResponseEntity<List<ResultadoPesquisaLivroDTO>> pesquisar(
+    public ResponseEntity<Page<ResultadoPesquisaLivroDTO>> pesquisar(
             @RequestParam(value = "isbn", required = false) String isbn,
             @RequestParam(value = "titulo", required = false) String titulo,
-            @RequestParam(value = "genero", required = false) GeneroLivro genero)
+            @RequestParam(value = "genero", required = false) GeneroLivro genero,
+            @RequestParam(value = "pagina", defaultValue = "0") Integer pagina,
+            @RequestParam(value = "tamanhoPagina", defaultValue = "10") Integer tamanhoPagina)
              {
 
-        var livro = livroService.pesquisa(isbn, titulo,genero);
-        var lista = livro.stream().map(livroMapper::toDTO).collect(Collectors.toList());
+        var paginaResultado = livroService.pesquisa(isbn, titulo,genero, pagina, tamanhoPagina);
 
-        return ResponseEntity.ok(lista);
+        var resultado = paginaResultado.map(livroMapper::toDTO);
+
+        return ResponseEntity.ok(resultado);
     }
 
     @PutMapping("/{id}")
